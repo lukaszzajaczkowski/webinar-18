@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class DynamicLoadingPage extends BasePage {
 
+
     public DynamicLoadingPage(WebDriver driver) {
         super(driver);
     }
@@ -21,6 +22,7 @@ public class DynamicLoadingPage extends BasePage {
     @FindBy(css = "#finish > h4")
     private WebElement finishTextHeader;
 
+
     public void clickStartButton() {
         startButton.click();
     }
@@ -28,4 +30,7 @@ public class DynamicLoadingPage extends BasePage {
     public String finishLoadingConfirmation() {
         return finishTextHeader.getText();
     }
+
+    public boolean loadingBarIsVisible() { return loadingBar.isDisplayed(); }
+
 }

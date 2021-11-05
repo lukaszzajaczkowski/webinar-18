@@ -13,6 +13,7 @@ Zadanie domowe:
 1. Rozbudować checkConfirmationText() o sprawdzenieczy loadingBar jest widoczny i następnie czy zniknął
 2. Dorobić podstronę (dowolną) dla http://the-internet.herokuapp.com/ i napisać testy
  */
+
 public class DynamicLoadingPageTests extends BaseTest {
     DynamicLoadingPage dynamicLoadingPage;
 
@@ -27,8 +28,13 @@ public class DynamicLoadingPageTests extends BaseTest {
     public void checkConfirmationText() {
         dynamicLoadingPage.clickStartButton();
 
+
+        Assert.assertTrue(dynamicLoadingPage.loadingBarIsVisible());
+
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("finish")));
+
+        Assert.assertFalse(dynamicLoadingPage.loadingBarIsVisible());
 
         String actualConfirmationText = dynamicLoadingPage.finishLoadingConfirmation();
 
